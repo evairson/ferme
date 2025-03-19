@@ -1,0 +1,32 @@
+
+
+
+.article {
+    font-size: 1.2em;
+    color: #333;
+    text-align: center;
+    margin: 30px;
+}
+
+.article-image-container {
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.article-image {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
+}
+
+.article-image:hover {
+    transform: scale(1.1);
+}
+
+.nav-item:hover {
+    background-color: #d83434;
+    color: white;
+}
