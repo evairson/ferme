@@ -65,10 +65,16 @@ main {
 
     section {
         grid-template-columns: 1fr 1fr !important;
+        margin : 10px !important;
     }
 
     main {
-        padding: 5px 20px !important;
+        padding: 5px 30px;
     }
+
+    .home {
+        padding: 0%;
+    }
+
     
 }
