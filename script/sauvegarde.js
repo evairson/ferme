@@ -21,7 +21,7 @@ export async function publishToGitHub({ file, html, TOKEN }) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
     <title>Document</title>
     </head>
        <header class="p-3 bg-green-950 text-white pl-20 py-5"> 

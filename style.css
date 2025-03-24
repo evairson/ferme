@@ -39,3 +39,31 @@
     background-color: #d83434;
     color: white;
 }
+
+header {
+    padding: 2% 2% 2% 10%;
+    background-color: #002d02;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+header h1 {
+    font-size: 1.6em;
+
+}
+
+header i {
+    font-size: 0.9em;
+    font-weight: 100;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 2% 10%;
+}
