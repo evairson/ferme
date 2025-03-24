@@ -9,8 +9,8 @@
 
 .article-image-container {
     margin: 0 auto;
+    aspect-ratio: 1 / 1;
     width: 90%;
-    height: 90%;
     overflow: hidden;
     border-radius: 50%;
 }
