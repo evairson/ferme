@@ -64,7 +64,7 @@ main {
     }
 
     section {
-        grid-template-columns: 2fr !important;
+        grid-template-columns: 1fr 1fr !important;
     }
 
     main {
