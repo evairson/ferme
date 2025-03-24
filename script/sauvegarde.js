@@ -31,7 +31,9 @@ export async function publishToGitHub({ file, html, TOKEN }) {
             <li><p></p></li>
         </ul>
     </header>
+    <main>
     ${html}
+    </main>
     </body>
     </html>`;
 

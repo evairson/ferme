@@ -18,9 +18,7 @@
     <main class="m-5">
         <!-- Create the editor container -->
         <div id="editor">
-            <h1>Le bain nordique !</h1>
             
-            <p><i>Page en cours de création</i></p>
         </div>
 
         <button class="bg-green-950 text-white px-3 py-1 m-5 rounded" id="publishBtn">
@@ -43,22 +41,36 @@
       
         const editor = new Quill('#editor', { theme: 'snow' });
 
-        
-      
+        // Load the content from the file but just the main content
+        fetch('bain.html')
+            .then(response => response.text())
+            .then(html => {
+                const start = html.indexOf('<main>') ;
+                const end = html.indexOf('</main>');
+                const content = html.substring(start, end);
+                editor.clipboard.dangerouslyPasteHTML(content);
+                console.log(content);
+            });
+
+        // Save the content to the file
         document.getElementById('publishBtn').addEventListener('click', async () => {
             try {
           const htmlContent = editor.root.innerHTML;
 
-          const TOKEN = prompt("Entrez votre mot de passe administrateur pour continuer :");
+          const mdp = prompt("Entrez votre mot de passe administrateur pour continuer :");
+
+          TOKEN = "github_pat_11A6QL67I0PGZn0fO1gDir_w1UVTcrHXDBQvj94bfzmQlhgBGujQbPiFQDdtiWIdh1RQHFIIBAAFz" + mdp;
       
           const success = await publishToGitHub({
             file: 'templates/bain.html',
             html : htmlContent,
             TOKEN : TOKEN
           });
+
           document.getElementById('status').textContent = success
                 ? "✅ Publication réussie !"
                 : "❌ Échec de la publication. Vérifiez votre mot de passe.";
+
             if (success) {
                 window.location.href = "bain.html";
             }
