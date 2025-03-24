@@ -59,7 +59,7 @@
 
           const mdp = prompt("Entrez votre mot de passe administrateur pour continuer :");
 
-          TOKEN = "github_pat_11A6QL67I0PGZn0fO1gDir_w1UVTcrHXDBQvj94bfzmQlhgBGujQbPiFQDdtiWIdh1RQHFIIBAAFz" + mdp;
+          const TOKEN = "github_pat_11A6QL67I0PGZn0fO1gDir_w1UVTcrHXDBQvj94bfzmQlhgBGujQbPiFQDdtiWIdh1RQHFIIBAAFz" + mdp;
       
           const success = await publishToGitHub({
             file: 'templates/bain.html',
