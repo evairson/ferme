@@ -26,10 +26,7 @@ export async function publishToGitHub({ file, html, TOKEN }) {
     </head>
        <header class="p-3 bg-green-950 text-white pl-20 py-5"> 
         <h1 class="text-3xl ml-20">La Ferme</h1>
-        <ul>
-            <li><i class="font-extralight ml-20 text-sm">113 Enceinte de la Paillière</i></li>
-            <li><p></p></li>
-        </ul>
+        <i class="font-extralight ml-20 text-sm">113 Enceinte de la Paillière</i>
     </header>
     <main class="prose">
     ${html}
