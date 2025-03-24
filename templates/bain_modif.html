@@ -43,21 +43,27 @@
       
         const editor = new Quill('#editor', { theme: 'snow' });
 
-        const TOKEN = prompt("Entrez votre mot de passe administrateur :");
+        
       
         document.getElementById('publishBtn').addEventListener('click', async () => {
-            
+            try {
           const htmlContent = editor.root.innerHTML;
+
+          const TOKEN = prompt("Entrez votre mot de passe administrateur pour continuer :");
       
           const success = await publishToGitHub({
             file: 'templates/bain.html',
             html : htmlContent,
             TOKEN : TOKEN
           });
-      
           document.getElementById('status').textContent = success
-            ? "✅ Publication réussie !"
-            : "❌ Échec de la publication.";
+                ? "✅ Publication réussie !"
+                : "❌ Échec de la publication. Vérifiez votre mot de passe.";
+            
+            } catch (error) {
+        
+            document.getElementById('status').textContent = "❌ Échec de la publication.";
+            }
         });
       </script>
     

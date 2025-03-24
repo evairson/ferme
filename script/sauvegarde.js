@@ -55,5 +55,5 @@ export async function publishToGitHub({ file, html, TOKEN }) {
         ...(sha && { sha })
       })
     });
-      return res;
+      return res.ok;
     }
