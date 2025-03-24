@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="p-3 bg-green-950 text-white pl-20 py-5"> 
+        <h1 class="text-3xl ml-20">La Ferme</h1>
+        <ul>
+            <li><i class="font-extralight ml-20 text-sm">113 Enceinte de la Paillière</i></li>
+            <li><p></p></li>
+        </ul>
+    </header>
+    <main class="m-5">
+        <!-- Create the editor container -->
+        <div id="editor">
+            <h1>Le bain nordique !</h1>
+            
+            <p><i>Page en cours de création</i></p>
+        </div>
+
+        <button class="bg-green-950 text-white px-3 py-1 m-5 rounded" id="publishBtn">
+            <p >Enregistrer</p>
+        </button>
+
+        <p id="status"></p>
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+    
+    <!-- Initialize Quill editor -->
+    <script>
+        const quill = new Quill('#editor', {
+        theme: 'snow'
+        });
+    </script>
+
+    <script type="module">
+        import { publishToGitHub } from '../script/sauvegarde.js';
+      
+        const editor = new Quill('#editor', { theme: 'snow' });
+      
+        document.getElementById('publishBtn').addEventListener('click', async () => {
+            
+          const htmlContent = editor.root.innerHTML;
+      
+          const success = await publishToGitHub({
+            file: 'templates/bain.html',
+            html : htmlContent
+          });
+      
+          document.getElementById('status').textContent = success
+            ? "✅ Publication réussie !"
+            : "❌ Échec de la publication.";
+        });
+      </script>
+    
+</body>
+</html>
