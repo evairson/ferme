@@ -49,6 +49,8 @@
         import { publishToGitHub } from '../script/sauvegarde.js';
       
         const editor = new Quill('#editor', { theme: 'snow' });
+
+        const TOKEN = prompt("Entrez votre mot de passe administrateur :");
       
         document.getElementById('publishBtn').addEventListener('click', async () => {
             
@@ -56,7 +58,8 @@
       
           const success = await publishToGitHub({
             file: 'templates/bain.html',
-            html : htmlContent
+            html : htmlContent,
+            TOKEN : TOKEN
           });
       
           document.getElementById('status').textContent = success

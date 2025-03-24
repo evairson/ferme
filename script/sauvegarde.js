@@ -10,7 +10,7 @@ async function getCurrentFileSha({GITHUB_USERNAME, REPO, FILE_PATH, TOKEN}) {
     return data.sha;
   }
 
-export async function publishToGitHub({ file, html }) {
+export async function publishToGitHub({ file, html, TOKEN }) {
     const GITHUB_USERNAME = "evairson";
     const REPO = "ferme";
     const BRANCH = "main";
@@ -35,7 +35,7 @@ export async function publishToGitHub({ file, html }) {
     </body>
     </html>`;
 
-    const TOKEN = prompt("Entrez votre mot de passe administrateur :");
+
 
     const contentEncoded = btoa(unescape(encodeURIComponent(fullHTML)));
     const sha = await getCurrentFileSha({GITHUB_USERNAME, REPO, FILE_PATH: file, TOKEN});
