@@ -59,7 +59,9 @@
           document.getElementById('status').textContent = success
                 ? "✅ Publication réussie !"
                 : "❌ Échec de la publication. Vérifiez votre mot de passe.";
-            
+            if (success) {
+                window.location.href = "bain.html";
+            }
             } catch (error) {
         
             document.getElementById('status').textContent = "❌ Échec de la publication.";
