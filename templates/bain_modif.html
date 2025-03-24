@@ -45,7 +45,7 @@
         fetch('bain.html')
             .then(response => response.text())
             .then(html => {
-                const start = html.indexOf('<main>') ;
+                const start = html.indexOf('<main class="prose">') ;
                 const end = html.indexOf('</main>');
                 const content = html.substring(start, end);
                 editor.clipboard.dangerouslyPasteHTML(content);
