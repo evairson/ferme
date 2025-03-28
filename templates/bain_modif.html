@@ -74,7 +74,7 @@
         // Save the content to the file
         document.getElementById('publishBtn').addEventListener('click', async () => {
             try {
-          const htmlContent = editor.getHTML();
+          var htmlContent = editor.getHTML();
 
           const mdp = prompt("Entrez votre mot de passe administrateur pour continuer :");
 
