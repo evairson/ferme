@@ -47,7 +47,7 @@
 
         const image_list = [];
       
-        const editor = createToast("bain.html");
+        const editor = createToast("feu.html");
 
         // Save the content to the file
         document.getElementById('publishBtn').addEventListener('click', async () => {
@@ -63,7 +63,7 @@
             
           htmlContent = editor.getHTML();
           const success = await publishToGitHub({
-            file: 'templates/bain.html',
+            file: 'templates/feu.html',
             html : htmlContent,
             TOKEN : TOKEN
           });
@@ -73,7 +73,7 @@
                 : "❌ Échec de la publication. Vérifiez votre mot de passe.";
 
             if (success) {
-                window.location.href = "bain.html";
+                window.location.href = "feu.html";
             }
             } catch (error) {
                 console.error(error);
