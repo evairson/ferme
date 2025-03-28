@@ -10,6 +10,31 @@ async function getCurrentFileSha({GITHUB_USERNAME, REPO, FILE_PATH, TOKEN}) {
     return data.sha;
   }
 
+export async function uploadImageToGitHub({ file, TOKEN }) {
+    const GITHUB_USERNAME = "evairson";
+    const REPO = "ferme";
+    const BRANCH = "main";
+    const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO}/contents/images/${Date.now()}.png`;
+
+    const contentEncoded = btoa(unescape(encodeURIComponent(await blobToBase64(file))));
+    const sha = await getCurrentFileSha({GITHUB_USERNAME, REPO, FILE_PATH: `images/${Date.now()}.png`, TOKEN});
+
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `token ${TOKEN}`,
+        Accept: "application/vnd.github.v3+json"
+      },
+      body: JSON.stringify({
+        message: "Upload image from Quill editor",
+        content: contentEncoded,
+        branch: BRANCH,
+        ...(sha && { sha })
+      })
+    });
+    return res;
+  }
+
 export async function publishToGitHub({ file, html, TOKEN }) {
     const GITHUB_USERNAME = "evairson";
     const REPO = "ferme";
