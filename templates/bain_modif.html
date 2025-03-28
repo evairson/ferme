@@ -86,11 +86,14 @@
                 TOKEN : TOKEN})
             .then((response) => {
                 const imageUrl = response.url;
+                const realName = imageUrl.split('/')[imageUrl.split('/').length - 1];
+                console.log("Image URL:", imageUrl);
+                console.log("Image name:", realName);
                 console.log("Image uploaded successfully:", imageUrl);
 
                 const img = document.querySelector(`img[alt="${image_list[i].name}"]`);
                     if (img) {
-                    img.src = imageUrl;
+                    img.src = `../images/importer/${realName}`;
                     } else {
                         console.error("Image not found in the editor:", image_list[i].name);
                     }
