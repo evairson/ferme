@@ -13,7 +13,7 @@
     <header class="p-3 bg-green-950 text-white pl-20 py-5"> 
         <h1 class="text-3xl ml-20">La Ferme</h1>
         <ul>
-            <li><i class="font-extralight ml-20 text-sm">113 Enceinte de la Paillière</i></li>
+            <li><i class="font-extralight ml-20 text-sm">4 chemin de Bignolas, La Marolle-en-Sologne</i></li>
             <li><p></p></li>
         </ul>
     </header>
@@ -40,6 +40,7 @@
 
     <script type="module">
         import { publishToGitHub, uploadImageToGitHub } from '../script/sauvegarde.js';
+        const { Editor } = toastui;
 
         const image_list = [];
       
@@ -47,7 +48,15 @@
             el: document.querySelector('#editor'),
             height: '500px',
             initialEditType: 'wysiwyg',
-            previewStyle: 'vertical'
+            previewStyle: 'vertical',
+            hooks: {
+                addImageBlobHook: (blob, callback) => {
+                    image_list.push(blob);
+                    console.log(blob);
+                    callback(URL.createObjectURL(blob), blob.name);
+                    console.log("Image ajoutée :", blob.name);
+                }
+            },
           });
 
         // Load the content from the file but just the main content
@@ -60,10 +69,6 @@
                 editor.setHTML(content);
                 console.log(content);
             });
-
-        addImageBlobHook: async (blob, callback) => {
-            image_list.push(blob);
-        }
               
 
         // Save the content to the file
@@ -80,12 +85,18 @@
                 file: image_list[i],
                 TOKEN : TOKEN})
             .then((response) => {
-                const imageUrl = response.data.content.download_url;
-                htmlContent = htmlContent.replace(`src="${image_list[i].name}"`, `src="${imageUrl}"`);
+                const imageUrl = response.url;
+                console.log("Image uploaded successfully:", imageUrl);
+
+                const img = document.querySelector(`img[alt="${image_list[i].name}"]`);
+                    if (img) {
+                    img.src = imageUrl;
+                }
             })
             .catch((error) => {
                 console.error("Error uploading image:", error);
                 document.getElementById('status').textContent = "❌ Échec de la publication.";
+                throw error;
             });
             }
 

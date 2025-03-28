@@ -14,10 +14,14 @@ export async function uploadImageToGitHub({ file, TOKEN }) {
     const GITHUB_USERNAME = "evairson";
     const REPO = "ferme";
     const BRANCH = "main";
-    const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO}/contents/images/${Date.now()}.png`;
+    const url = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO}/contents/images/importer/${Date.now()}.png`;
 
-    const contentEncoded = btoa(unescape(encodeURIComponent(await blobToBase64(file))));
-    const sha = await getCurrentFileSha({GITHUB_USERNAME, REPO, FILE_PATH: `images/${Date.now()}.png`, TOKEN});
+    const base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
 
     const res = await fetch(url, {
       method: "PUT",
@@ -27,9 +31,8 @@ export async function uploadImageToGitHub({ file, TOKEN }) {
       },
       body: JSON.stringify({
         message: "Upload image from Quill editor",
-        content: contentEncoded,
+        content: base64,
         branch: BRANCH,
-        ...(sha && { sha })
       })
     });
     return res;
@@ -51,7 +54,7 @@ export async function publishToGitHub({ file, html, TOKEN }) {
     </head>
        <header class="p-3 bg-green-950 text-white pl-20 py-5"> 
         <h1 class="text-3xl ml-20">La Ferme</h1>
-        <i class="font-extralight ml-20 text-sm">113 Enceinte de la Paillière</i>
+        <i class="font-extralight ml-20 text-sm">4 chemin de Bignolas, La Marolle-en-Sologne</i>
     </header>
     <main class="prose">
     ${html}
