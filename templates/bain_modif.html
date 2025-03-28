@@ -93,9 +93,14 @@
 
                 const img = document.querySelector(`img[alt="${image_list[i].name}"]`);
                     if (img) {
-                    img.src = `../images/importer/${realName}`;
+                    img.src = `https://evairson.github.io/ferme/images/importer/${realName}`;
+                    console.log("Image updated in the editor:", img.src);
+                    } else if (img === null) {
+                        console.error("Image not found in the editor:", image_list[i].name);
+                        throw new Error("Image not found in the editor");
                     } else {
                         console.error("Image not found in the editor:", image_list[i].name);
+                        throw new Error("Image not found in the editor");
                     }
                     
                 
@@ -120,7 +125,7 @@
                 : "❌ Échec de la publication. Vérifiez votre mot de passe.";
 
             if (success) {
-                window.location.href = "bain.html";
+                //window.location.href = "bain.html";
             }
             } catch (error) {
                 console.error(error);
