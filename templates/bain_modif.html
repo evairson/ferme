@@ -91,7 +91,11 @@
                 const img = document.querySelector(`img[alt="${image_list[i].name}"]`);
                     if (img) {
                     img.src = imageUrl;
-                }
+                    } else {
+                        console.error("Image not found in the editor:", image_list[i].name);
+                    }
+                    
+                
             })
             .catch((error) => {
                 console.error("Error uploading image:", error);
@@ -101,7 +105,7 @@
             }
 
             
-      
+          htmlContent = editor.getHTML();
           const success = await publishToGitHub({
             file: 'templates/bain.html',
             html : htmlContent,
