@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="robots" content="noindex, nofollow">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    <script>
+        const correctPassword = "monmotdepasse";
+    
+        function checkPassword() {
+          const userPassword = prompt("Entrez le mot de passe pour accéder à la page :");
+          if (userPassword !== correctPassword) {
+            alert("Mot de passe incorrect.");
+            document.body.innerHTML = "<h1>Accès refusé</h1>";
+          }
+        }
+        window.onload = checkPassword;
+    </script>
     <header> 
         <h1>La Ferme</h1>
         <i>4 chemin de Bignolas, La Marolle-en-Sologne</i>
