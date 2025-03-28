@@ -74,11 +74,10 @@ export async function publishToGitHub({ file, html, TOKEN }) {
         <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
     <link rel="stylesheet" href="../style.css">
     <title>Document</title>
     </head>
-       <header class="p-3 bg-green-950 text-white pl-20 py-5"> 
+       <header> 
         <a href="../index.html">
             <img class="w-20" src="../images/logo.png" alt="Logo de la Ferme">
         </a>

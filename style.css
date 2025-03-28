@@ -1,4 +1,49 @@
+/* Mini reset inspiré de Tailwind Preflight */
+*, ::before, ::after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb; /* neutre gris clair */
+}
 
+html {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    font-family: system-ui, sans-serif;
+    tab-size: 4;
+}
+
+body {
+    margin: 0;
+    line-height: inherit;
+}
+
+header h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+header a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+header img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+main img {
+    width: 70%;
+    height: auto;
+}
+
+.logo {
+    width: 5%;
+    height: auto;
+    margin: 0 2%;
+}
 
 .article {
     font-size: 1.2em;
@@ -31,10 +76,12 @@
 }
 
 header {
-    padding: 2% 2% 2% 10%;
+    padding: 2% 2% 2% 5%;
     background-color: #002d02;
     color: white;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: start;
 }
 
 header h1 {
@@ -79,7 +126,3 @@ main {
     
 }
 
-main img {
-    width: 70%;
-    height: auto;
-}
