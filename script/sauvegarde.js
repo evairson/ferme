@@ -73,15 +73,17 @@ export async function publishToGitHub({ file, html, TOKEN }) {
         <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="../style.css">
-    <title>Document</title>
     </head>
        <header> 
-        <a href="../index.html">
-            <img class="w-20" src="../images/logo.png" alt="Logo de la Ferme">
+        <a class="logo" href="../">
+             <img src="../images/logo.png" alt="Logo de la Ferme">
         </a>
-        <h1 class="text-3xl ml-20">La Ferme</h1>
-        <i class="font-extralight ml-20 text-sm">4 chemin de Bignolas, La Marolle-en-Sologne</i>
+        <div>
+             <h1 class="text-3xl ml-20">La Ferme</h1>
+             <i class="font-extralight ml-20 text-sm">4 chemin de Bignolas, La Marolle-en-Sologne</i>
+         </div>
     </header>
     <main class="prose">
     ${html}
