@@ -47,12 +47,13 @@
 
         const image_list = [];
       
-        const editor = createToast("bain.html");
+        const editor = await createToast("bain.html");
 
         // Save the content to the file
         document.getElementById('publishBtn').addEventListener('click', async () => {
             try {
-          var htmlContent = editor.getHTML();
+            // Get the HTML content from the editor
+            var htmlContent = editor.getHTML();
 
           const mdp = prompt("Entrez votre mot de passe administrateur pour continuer :");
 

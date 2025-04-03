@@ -10,7 +10,7 @@ async function getCurrentFileSha({GITHUB_USERNAME, REPO, FILE_PATH, TOKEN}) {
     return data.sha;
   }
 
-export async function createToast({file}) {
+export async function createToast(file) {
   const editor = new toastui.Editor({
     el: document.querySelector('#editor'),
     height: '500px',
@@ -31,7 +31,6 @@ export async function createToast({file}) {
           const end = html.indexOf('</main>');
           const content = html.substring(start, end);
           editor.setHTML(content);
-          console.log(content);
       });
   return editor;
 }
